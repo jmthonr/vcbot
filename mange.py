@@ -1,9 +1,9 @@
-from telethon import functions
-from telethon.errors import ChatAdminRequiredError, UserAlreadyInvitedError
-from telethon.tl.types import Channel, Chat, User
 from sbb_b import sbb_b
 from sbb_b.core.managers import edit_delete, edit_or_reply
 from sbb_b.helpers.utils import mentionuser
+from telethon import functions
+from telethon.errors import ChatAdminRequiredError, UserAlreadyInvitedError
+from telethon.tl.types import Channel, Chat, User
 
 
 async def get_group_call(chat):
@@ -73,7 +73,9 @@ async def inv_vc(event):
         return
     if not users:
         if not reply:
-            return await edit_delete("**يجب عليك الرد على المستخدم او وضع معرفه مع الامر**")
+            return await edit_delete(
+                "**يجب عليك الرد على المستخدم او وضع معرفه مع الامر**"
+            )
         users = reply.from_id
     await edit_or_reply(event, "**- تم دعوة المستخدم الى المكالمة**")
     entities = str(users).split(" ")
@@ -88,7 +90,9 @@ async def inv_vc(event):
         )
         await edit_delete(event, "**- تم دعوة المستخدمين الى المكالمة**")
     except UserAlreadyInvitedError:
-        return await edit_delete(event, "**- المستحدم بالأصل مدعو لهذه المكالمة**", time=20)
+        return await edit_delete(
+            event, "**- المستحدم بالأصل مدعو لهذه المكالمة**", time=20
+        )
 
 
 @sbb_b.ar_cmd(pattern="معلومات المكالمة")
