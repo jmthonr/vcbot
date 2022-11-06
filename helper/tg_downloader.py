@@ -5,11 +5,11 @@ import pathlib
 import time
 from datetime import datetime
 
-from telethon.tl import types
-from telethon.utils import get_extension
 from sbb_b.Config import Config
 from sbb_b.core.managers import edit_or_reply
 from sbb_b.helpers import progress
+from telethon.tl import types
+from telethon.utils import get_extension
 
 NAME = "untitled"
 
